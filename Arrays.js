@@ -34,13 +34,28 @@ class MyArray {
 		delete this.data[this.length - 1];
 		this.length--;
 	}
+
+	shift(item) {
+		const lastItem = this.data[this.length - 1];
+		for (let i = this.length - 1; i <= this.length - 1; i--) {
+			this.data[i + 1] = this.data[i];
+			if (i === 0) {
+				break;
+			}
+		}
+		this.data[0] = item;
+		this.length++;
+		this.data[this.length - 1] = lastItem;
+	}
 }
 
 const newArr = new MyArray();
 
 newArr.push("Hello");
 newArr.push("hihihi");
-newArr.push("hihi");
-newArr.push("hi");
-// newArr.delete(1);
+newArr.shift("first");
+newArr.shift("sfjsdfa");
+newArr.shift("defa");
+newArr.shift("ant");
+newArr.delete(2);
 console.log(newArr);
