@@ -3,6 +3,7 @@ class HashTable {
 		this.data = new Array(size);
 	}
 
+	//Hash Function
 	_hash(key) {
 		let hash = 0;
 		for (let i = 0; i < key.length; i++) {
@@ -11,17 +12,18 @@ class HashTable {
 		return hash;
 	}
 
+	//Set key value pair
 	set(key, value) {
 		const address = this._hash(key);
 
 		if (!this.data[address]) {
 			this.data[address] = [];
-			console.log(this.data);
 		}
 		this.data[address].push([key, value]);
 		return this.data;
 	}
 
+	//Get value from a key
 	get(key) {
 		let address = this._hash(key);
 		const currentBucket = this.data[address];
@@ -35,12 +37,22 @@ class HashTable {
 			return undefined;
 		}
 	}
+
+	//Gets the keys of the object
+	keys() {
+		let keysArray = [];
+		for (let i = 0; i < this.data.length; i++) {
+			keysArray.push(this.data[i][0][0]);
+		}
+		return keysArray;
+	}
 }
 
 const hashTable = new HashTable(50);
 
 hashTable.set("fruit", 200);
 hashTable.set("code", 150);
+hashTable.keys();
 
 console.log(hashTable.get("fruit"));
 // console.log(val);/
