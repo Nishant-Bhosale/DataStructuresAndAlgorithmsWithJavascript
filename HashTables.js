@@ -42,7 +42,9 @@ class HashTable {
 	keys() {
 		let keysArray = [];
 		for (let i = 0; i < this.data.length; i++) {
-			keysArray.push(this.data[i][0][0]);
+			if (this.data[i]) {
+				keysArray.push(this.data[i][0][0]);
+			}
 		}
 		return keysArray;
 	}
@@ -52,7 +54,19 @@ const hashTable = new HashTable(50);
 
 hashTable.set("fruit", 200);
 hashTable.set("code", 150);
-hashTable.keys();
+console.log(hashTable.keys());
 
-console.log(hashTable.get("fruit"));
-// console.log(val);/
+function firstRecurringCharacter(arr) {
+	let map = {};
+	for (let i = 0; i < arr.length; i++) {
+		if (map[arr[i]] !== undefined) {
+			return arr[i];
+		} else {
+			map[arr[i]] = i;
+		}
+	}
+	return undefined;
+}
+
+let a = firstRecurringCharacter([2, 3, 3, 2, 6, 9, 1]);
+console.log(a);
