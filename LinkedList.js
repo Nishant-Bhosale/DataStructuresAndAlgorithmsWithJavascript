@@ -60,8 +60,18 @@ class LinkedList {
 		return this.printList();
 	}
 
+	remove(index) {
+		if (index > this.length || index < 0) throw new Error("Index out of range");
+
+		const leadNode = this.traverseList(index - 1);
+		const unwantedNode = leadNode.next;
+		leadNode.next = unwantedNode.next;
+		this.length--;
+		return this.printList();
+	}
+
 	traverseList(index) {
-		const currentNode = this.head;
+		let currentNode = this.head;
 		let counter = 0;
 
 		while (counter !== index) {
@@ -77,6 +87,7 @@ myLinkedList.append("asfjk");
 myLinkedList.append("fsg");
 myLinkedList.prepend("1");
 myLinkedList.printList();
-myLinkedList.insert(2, 3);
-console.log(myLinkedList);
+myLinkedList.insert(2, "efa");
+myLinkedList.insert(1, "efafsdfsd");
+myLinkedList.remove(3);
 myLinkedList.printList();
