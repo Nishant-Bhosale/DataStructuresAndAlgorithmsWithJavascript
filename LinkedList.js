@@ -86,9 +86,9 @@ class LinkedList {
 			return this.head;
 		}
 
-		const first = this.head;
-		const second = first.next;
+		let first = this.head;
 		this.tail = this.head;
+		let second = first.next;
 
 		while (second) {
 			const temp = second.next;
@@ -98,15 +98,14 @@ class LinkedList {
 		}
 		this.head.next = null;
 		this.head = first;
+		console.log(this);
+		return this;
 	}
 }
 
 const myLinkedList = new LinkedList("Abc");
-myLinkedList.append("asfjk");
-myLinkedList.append("fsg");
-myLinkedList.prepend("1");
-myLinkedList.printList();
-myLinkedList.insert(2, "efa");
-myLinkedList.insert(1, "efafsdfsd");
-myLinkedList.remove(3);
+myLinkedList.prepend("abc");
+myLinkedList.prepend("efg");
+myLinkedList.prepend("jhi");
+myLinkedList.reverse();
 myLinkedList.printList();
