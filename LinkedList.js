@@ -80,6 +80,25 @@ class LinkedList {
 		}
 		return currentNode;
 	}
+
+	reverse() {
+		if (!this.head.next) {
+			return this.head;
+		}
+
+		const first = this.head;
+		const second = first.next;
+		this.tail = this.head;
+
+		while (second) {
+			const temp = second.next;
+			second.next = first;
+			first = second;
+			second = temp;
+		}
+		this.head.next = null;
+		this.head = first;
+	}
 }
 
 const myLinkedList = new LinkedList("Abc");
